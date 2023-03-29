@@ -60,6 +60,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:5d66bc0f3ff3534b8e9830e7867cbd0867b6d8973301f947fe2cffe0c29dcc7356062f22438874a034f2cdd1c500c47b19e690c4e8c88e69cd1f842625ff1e01#npm:18.2.0"],\
             ["react-is", "npm:18.2.0"],\
             ["react-router-dom", "virtual:5d66bc0f3ff3534b8e9830e7867cbd0867b6d8973301f947fe2cffe0c29dcc7356062f22438874a034f2cdd1c500c47b19e690c4e8c88e69cd1f842625ff1e01#npm:5.3.4"],\
+            ["serve", "npm:14.2.0"],\
             ["stream-browserify", "npm:3.0.0"],\
             ["string_decoder", "npm:1.3.0"],\
             ["styled-components", "virtual:5d66bc0f3ff3534b8e9830e7867cbd0867b6d8973301f947fe2cffe0c29dcc7356062f22438874a034f2cdd1c500c47b19e690c4e8c88e69cd1f842625ff1e01#npm:5.3.6"],\
@@ -3089,6 +3090,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:5d66bc0f3ff3534b8e9830e7867cbd0867b6d8973301f947fe2cffe0c29dcc7356062f22438874a034f2cdd1c500c47b19e690c4e8c88e69cd1f842625ff1e01#npm:18.2.0"],\
             ["react-is", "npm:18.2.0"],\
             ["react-router-dom", "virtual:5d66bc0f3ff3534b8e9830e7867cbd0867b6d8973301f947fe2cffe0c29dcc7356062f22438874a034f2cdd1c500c47b19e690c4e8c88e69cd1f842625ff1e01#npm:5.3.4"],\
+            ["serve", "npm:14.2.0"],\
             ["stream-browserify", "npm:3.0.0"],\
             ["string_decoder", "npm:1.3.0"],\
             ["styled-components", "virtual:5d66bc0f3ff3534b8e9830e7867cbd0867b6d8973301f947fe2cffe0c29dcc7356062f22438874a034f2cdd1c500c47b19e690c4e8c88e69cd1f842625ff1e01#npm:5.3.6"],\

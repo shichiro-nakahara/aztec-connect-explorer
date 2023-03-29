@@ -4,6 +4,7 @@ import { HashValue, InfoRow, Value } from '../block_summary/index.js';
 import { assetIdFromBuffer, formatAsset, getAssetIcon } from './helpers.js';
 import { Tx } from './types.js';
 import { useAsset } from '../context.js';
+import { Buffer } from 'buffer';
 
 export function DepositDetails({ tx }: { tx: Tx }) {
   const innerProofData = InnerProofData.fromBuffer(Buffer.from(tx.proofData, 'hex'));

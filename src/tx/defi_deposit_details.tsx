@@ -6,6 +6,7 @@ import { formatAsset, getAssetIcon } from './helpers.js';
 import { NetworkContext, useAsset } from '../context.js';
 import { registrationsDataRaw } from './registrations_data_raw.js';
 import { ACCEPTABLE_DEPLOY_TAGS } from '../config.js';
+import { Buffer } from 'buffer';
 
 function getBridgeInteractionDescription(deployTag: string, bridgeCallData: BridgeCallData) {
   if (!ACCEPTABLE_DEPLOY_TAGS.includes(deployTag)) {

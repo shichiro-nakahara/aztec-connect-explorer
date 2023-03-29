@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "serve ./dest",
     "build": "yarn clean && yarn vite build",
     "start:dev": "yarn vite",
     "formatting": "yarn prettier --check ./src && yarn eslint --max-warnings 0 ./src",
@@ -48,6 +49,7 @@
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
     "react-router-dom": "^5.2.0",
+    "serve": "^14.2.0",
     "stream-browserify": "^3.0.0",
     "string_decoder": "^1.3.0",
     "styled-components": "^5.2.0",

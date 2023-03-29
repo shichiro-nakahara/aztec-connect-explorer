@@ -1,5 +1,12 @@
 import { BlockchainStatus, getRollupProviderStatus } from '@aztec/sdk';
 
+const config = {
+  deployTag: '',
+  rollupHost: 'http://136.244.98.226:8081',
+  networkName: 'Mumbai',
+  blockExplorerUrl: 'https://mumbai.polygonscan.com',
+};
+
 export const ACCEPTABLE_DEPLOY_TAGS = [
   'aztec-connect-prod',
   'aztec-connect-dev',
@@ -17,58 +24,17 @@ export interface Network {
   blockchainStatus: BlockchainStatus;
 }
 
-async function getInferredDeployTag() {
-  // If we haven't overridden our deploy tag, we discover it at runtime. All s3 deployments have a file
-  // called DEPLOY_TAG in their root containing the deploy tag.
-  if (process.env.NODE_ENV !== 'development') {
-    const resp = await fetch('/DEPLOY_TAG');
-    const text = await resp.text();
-    return text.replace('\n', '');
-  } else {
-    return '';
-  }
-}
-
 export async function getNetwork(): Promise<Network> {
-  const deployTag = await getInferredDeployTag();
-
-  const rollupProviderUrl = deployTag ? `https://api.aztec.network/${deployTag}/falafel` : 'http://localhost:8081';
+  const rollupProviderUrl = 'http://136.244.98.226:8081';
   const endpoint = `${rollupProviderUrl}`;
   const { blockchainStatus } = await getRollupProviderStatus(rollupProviderUrl);
-  const { chainId } = blockchainStatus;
-
-  if (!deployTag || chainId === 1337) {
-    return {
-      deployTag,
-      name: 'ganache',
-      baseUrl: '/ganache',
-      endpoint,
-      etherscanUrl: '',
-      blockchainStatus,
-    };
-  }
-
-  const getChainName = (chainId: number) => {
-    switch (chainId) {
-      case 1:
-        return 'mainnet';
-      case 0xdef:
-        return 'devnet';
-      case 0x57a93:
-        return 'stage';
-      case 0xa57ec:
-        return 'testnet';
-      default:
-        throw new Error(`Unknown chain id: ${chainId}`);
-    }
-  };
 
   return {
-    deployTag,
-    name: getChainName(chainId),
+    deployTag: config.deployTag,
+    name: config.networkName,
     baseUrl: '',
     endpoint,
-    etherscanUrl: chainId == 1 ? 'https://etherscan.io' : '',
+    etherscanUrl: config.blockExplorerUrl,
     blockchainStatus,
   };
 }
