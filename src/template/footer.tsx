@@ -6,29 +6,14 @@ import { colours, fontSizes, fontWeights, lineHeights, spacings, breakpoints } f
 import { ContentWrapper } from './content_wrapper.js';
 import { FooterMenu } from './footer_menu.js';
 
-const documentationItems = [
+const networkItems = [
   {
-    name: 'Github',
-    href: 'https://github.com/AztecProtocol',
-  },
-  {
-    name: 'Aztec 1.0 Docs',
-    href: 'https://docs.aztecprotocol.com/',
-  },
-  {
-    name: 'Whitepaper',
-    href: 'https://eprint.iacr.org/2019/953.pdf',
-  },
-];
-
-const companyItems = [
-  {
-    name: 'Blog',
+    name: 'PolyAztec',
     href: 'https://medium.com/aztec-protocol',
   },
   {
-    name: 'Privacy Policy',
-    href: 'https://www.aztecprotocol.com/privacy',
+    name: 'ZKPay',
+    href: 'https://zkpay.finance',
   },
 ];
 
@@ -36,18 +21,6 @@ const socialItems = [
   {
     name: 'Twitter',
     href: 'https://twitter.com/aztecprotocol',
-  },
-  {
-    name: 'Telegram',
-    href: 'https://t.me/aztecprotocol',
-  },
-  {
-    name: 'Discord',
-    href: 'https://discord.gg/Ge9scQ',
-  },
-  {
-    name: 'PLONK Café',
-    href: 'https://github.com/AztecProtocol',
   },
 ];
 
@@ -111,24 +84,6 @@ const Col = styled.div`
   }
 `;
 
-const Foot = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: ${spacings.xl} 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.4);
-  z-index: 1;
-
-  @media (max-width: ${breakpoints.xs}) {
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: flex-end;
-    font-size: ${fontSizes.xs};
-  }
-`;
-
 const GlobeBg = styled.img`
   position: absolute;
   left: 0;
@@ -148,19 +103,12 @@ export const Footer: React.FunctionComponent = () => (
           <Logo src={logo} />
         </PrimaryCol>
         <Col>
-          <FooterMenu title="Documentation" menuItems={documentationItems} />
-        </Col>
-        <Col>
-          <FooterMenu title="Company" menuItems={companyItems} />
+          <FooterMenu title="Network" menuItems={networkItems} />
         </Col>
         <Col>
           <FooterMenu title="Social" menuItems={socialItems} />
         </Col>
       </FooterContent>
-      <Foot>
-        <address>{'2 Leonard Circus London'}</address>
-        {'© 2020 Spilsbury Holdings Ltd.'}
-      </Foot>
       <GlobeBg src={globeIcon} />
     </StyledContent>
   </FooterRoot>

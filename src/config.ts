@@ -2,7 +2,7 @@ import { BlockchainStatus, getRollupProviderStatus } from '@aztec/sdk';
 
 const config = {
   deployTag: '',
-  rollupHost: 'http://136.244.98.226:8081',
+  rollupHost: 'http://localhost:8081',
   networkName: 'Mumbai',
   blockExplorerUrl: 'https://mumbai.polygonscan.com',
 };
@@ -25,15 +25,13 @@ export interface Network {
 }
 
 export async function getNetwork(): Promise<Network> {
-  const rollupProviderUrl = 'http://136.244.98.226:8081';
-  const endpoint = `${rollupProviderUrl}`;
-  const { blockchainStatus } = await getRollupProviderStatus(rollupProviderUrl);
+  const { blockchainStatus } = await getRollupProviderStatus(config.rollupHost);
 
   return {
     deployTag: config.deployTag,
     name: config.networkName,
     baseUrl: '',
-    endpoint,
+    endpoint: config.rollupHost,
     etherscanUrl: config.blockExplorerUrl,
     blockchainStatus,
   };
