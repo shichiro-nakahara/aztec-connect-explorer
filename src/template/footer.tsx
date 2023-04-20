@@ -6,21 +6,18 @@ import { colours, fontSizes, fontWeights, lineHeights, spacings, breakpoints } f
 import { ContentWrapper } from './content_wrapper.js';
 import { FooterMenu } from './footer_menu.js';
 
+const dev = window.location.hostname.includes('dev') || window.location.hostname.includes('localhost');
 const networkItems = [
   {
     name: 'PolyAztec',
-    href: 'https://medium.com/aztec-protocol',
-  },
-  {
-    name: 'ZKPay',
-    href: 'https://zkpay.finance',
+    href: dev ? 'https://dev.polyaztec.xyz' : 'https://polyaztec.xyz'
   },
 ];
 
 const socialItems = [
   {
     name: 'Twitter',
-    href: 'https://twitter.com/aztecprotocol',
+    href: '#', // TODO: Update
   },
 ];
 

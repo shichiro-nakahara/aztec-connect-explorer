@@ -2,7 +2,7 @@ import React from 'react';
 import { default as styled } from 'styled-components';
 import { Text } from '../components/index.js';
 import { NetworkContext } from '../context.js';
-import logo from '../images/logo.svg';
+import logo from '../images/polygon-matic-logo-white.svg';
 import { borderRadius, spacings, gradients } from '../styles/index.js';
 
 const Root = styled.div`
