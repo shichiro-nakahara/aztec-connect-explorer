@@ -1,10 +1,10 @@
 import React from 'react';
 import { default as styled } from 'styled-components';
-import logo from '../images/aztec-logo.svg';
 import globeIcon from '../images/powerful-bg.svg';
 import { colours, fontSizes, fontWeights, lineHeights, spacings, breakpoints } from '../styles/index.js';
 import { ContentWrapper } from './content_wrapper.js';
 import { FooterMenu } from './footer_menu.js';
+import { Text } from '../components/index.js';
 
 const dev = window.location.hostname.includes('dev') || window.location.hostname.includes('localhost');
 const networkItems = [
@@ -17,7 +17,7 @@ const networkItems = [
 const socialItems = [
   {
     name: 'Twitter',
-    href: '#', // TODO: Update
+    href: 'https://twitter.com/poly_aztec',
   },
 ];
 
@@ -92,12 +92,24 @@ const GlobeBg = styled.img`
   pointer-events: none;
 `;
 
+const Title = styled(Text)`
+  font-size: ${fontSizes.l};
+  line-height: ${lineHeights.m};
+  letter-spacing: 4px;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: ${breakpoints.xs}) {
+    font-size: ${fontSizes.m};
+    line-height: ${lineHeights.s};
+  }
+`;
+
 export const Footer: React.FunctionComponent = () => (
   <FooterRoot>
     <StyledContent>
       <FooterContent>
         <PrimaryCol>
-          <Logo src={logo} />
+          <Title text="PolyAztec" color="white" weight="light" />
         </PrimaryCol>
         <Col>
           <FooterMenu title="Network" menuItems={networkItems} />

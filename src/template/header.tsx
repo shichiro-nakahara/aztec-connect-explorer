@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { default as styled } from 'styled-components';
 import { Text } from '../components/index.js';
-import logo from '../images/aztec-logo.svg';
 import { spacings, breakpoints, fontSizes, lineHeights } from '../styles/index.js';
 import { NetworkIndicator } from '../network_indicator/index.js';
 
@@ -45,18 +44,21 @@ const LogoRoot = styled(Link)`
   }
 `;
 
-const Logo = styled.img`
-  margin-right: ${spacings.xs};
-  height: 50px;
+const Title = styled(Text)`
+  font-size: ${fontSizes.l};
+  line-height: ${lineHeights.m};
+  letter-spacing: 4px;
+  margin-right: 1rem;
 
   @media (max-width: ${breakpoints.xs}) {
-    height: 40px;
+    font-size: ${fontSizes.m};
+    line-height: ${lineHeights.s};
+    margin-bottom: 0.5rem;
   }
 `;
 
 const Caption = styled(Text)`
   font-size: ${fontSizes.m};
-  line-height: ${lineHeights.m};
   letter-spacing: 2px;
 
   @media (max-width: ${breakpoints.xs}) {
@@ -68,7 +70,7 @@ const Caption = styled(Text)`
 export const Header: React.FunctionComponent = () => (
   <HeaderRoot>
     <LogoRoot to="/">
-      <Logo src={logo} />
+      <Title text="PolyAztec" color="white" weight="light" />
       <Caption text="BLOCK EXPLORER" color="white" weight="light" />
     </LogoRoot>
     <RightSideRoot>
