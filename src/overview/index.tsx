@@ -74,6 +74,7 @@ const Blob = styled.img`
 
 export const Overview: React.FunctionComponent = () => {
   const [status, setStatus] = useState<NetworkStatsQueryData>();
+  const [rollupStatus, setRollupStatus] = useState();
 
   const urlQuery = new URLSearchParams(useLocation().search);
   const page = +(urlQuery.get('p') || 1);
@@ -85,19 +86,30 @@ export const Overview: React.FunctionComponent = () => {
     if (response.ok) setStatus(data);
   };
 
+  const fetchRollupStatus = async () => {
+    const data = await get('/rollup-status');
+    if (response.ok) setRollupStatus(data);
+  };
+
   // initialize
   useEffect(() => {
     fetchStatus().catch(() => console.log('Error fetching stats'));
+    fetchRollupStatus().catch(() => console.log('Error fetching rollup status'));
   }, []);
 
   useEffect(() => {
-    let interval: number | null = null;
+    let statusInterval: number | null = null;
+    let rollupStatusInterval: number | null = null;
     if (page === 1) {
-      interval = window.setInterval(fetchStatus, POLL_INTERVAL);
+      statusInterval = window.setInterval(fetchStatus, POLL_INTERVAL);
+      rollupStatusInterval = window.setInterval(fetchRollupStatus, POLL_INTERVAL);
     }
     return () => {
-      if (interval !== null) {
-        clearInterval(interval);
+      if (statusInterval !== null) {
+        clearInterval(statusInterval);
+      }
+      if (rollupStatusInterval !== null) {
+        clearInterval(rollupStatusInterval);
       }
     };
   }, [page]);
@@ -114,7 +126,7 @@ export const Overview: React.FunctionComponent = () => {
   return (
     <StyledSections>
       <StyledSection title="Network Stats">
-        <NetworkStats status={status} loading={loading} error={!!error} />
+        <NetworkStats status={status} loading={loading} error={!!error} rollupStatus={rollupStatus} />
       </StyledSection>
       <StyledSection title={blocksTitleNode}>
         <Blocks status={status} page={page} loading={loading} error={!!error} />

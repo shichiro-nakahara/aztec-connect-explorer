@@ -40,7 +40,22 @@ interface StatsProps {
   error: boolean;
 }
 
-export const NetworkStats: React.FunctionComponent<StatsProps> = ({ status, loading, error }) => {
+export const NetworkStats: React.FunctionComponent<StatsProps> = ({ status, loading, error, rollupStatus }) => {
+  const blockProcessedAt = !loading && rollupStatus && rollupStatus.rollup.processing ?
+    moment(rollupStatus.rollup.started).add(
+      (rollupStatus.rollup.innerRollups * rollupStatus.timeEstimate.innerRollup) + rollupStatus.timeEstimate.outerRollup,
+      'seconds'
+    )
+    :
+    null;
+  
+  let nextBlockAt = !loading && status && status.nextPublishTime ? moment(status.nextPublishTime) : null;
+  if (blockProcessedAt && nextBlockAt && status.runtimeConfig.publishInterval) {
+    while (nextBlockAt.diff(blockProcessedAt, 'seconds') < 0) {
+      nextBlockAt = nextBlockAt.add(status.runtimeConfig.publishInterval, 'seconds');
+    }
+  }
+
   return (
     <DeviceWidth>
       {({ breakpoint }) => {
@@ -71,14 +86,32 @@ export const NetworkStats: React.FunctionComponent<StatsProps> = ({ status, load
             <StyledStat
               theme="secondary"
               size={statSize}
-              icon={blockTimeIcon}
-              label={'NEXT BLOCK IN'}
+              icon={blocksIcon}
+              label={'BLOCK PROCESSED IN'}
               value={
-                error || (loading && !status) || !status || (status && !status.nextPublishTime) ? (
+                error || (loading && !rollupStatus) || !blockProcessedAt ? (
                   'Idle'
                 ) : (
                   <Countdown
-                    time={moment(status.nextPublishTime)}
+                    time={blockProcessedAt}
+                    size={statSize}
+                    unitSize={statSize === 'l' ? 'm' : 'xs'}
+                    gaps={[86400, 3600, 120, 0]}
+                  />
+                )
+              }
+            />
+            <StyledStat
+              theme="secondary"
+              size={statSize}
+              icon={blockTimeIcon}
+              label={'NEXT BLOCK IN'}
+              value={
+                error || (loading && !status) || !nextBlockAt ? (
+                  'Idle'
+                ) : (
+                  <Countdown
+                    time={nextBlockAt}
                     size={statSize}
                     unitSize={statSize === 'l' ? 'm' : 'xs'}
                     gaps={[86400, 3600, 120, 0]}
