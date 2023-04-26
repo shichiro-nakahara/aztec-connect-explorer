@@ -41,7 +41,7 @@ interface StatsProps {
 }
 
 export const NetworkStats: React.FunctionComponent<StatsProps> = ({ status, loading, error, rollupStatus }) => {
-  const blockProcessedAt = !loading && rollupStatus && rollupStatus.rollup.processing ?
+  const blockProcessedAt = rollupStatus && rollupStatus.rollup.processing && rollupStatus.timeEstimate.innerRollup && rollupStatus.timeEstimate.outerRollup ?
     moment(rollupStatus.rollup.started).add(
       (rollupStatus.rollup.innerRollups * rollupStatus.timeEstimate.innerRollup) + rollupStatus.timeEstimate.outerRollup,
       'seconds'
@@ -49,7 +49,7 @@ export const NetworkStats: React.FunctionComponent<StatsProps> = ({ status, load
     :
     null;
   
-  let nextBlockAt = !loading && status && status.nextPublishTime ? moment(status.nextPublishTime) : null;
+  let nextBlockAt = status && status.nextPublishTime ? moment(status.nextPublishTime) : null;
   if (blockProcessedAt && nextBlockAt && status.runtimeConfig.publishInterval) {
     while (nextBlockAt.diff(blockProcessedAt, 'seconds') < 0) {
       nextBlockAt = nextBlockAt.add(status.runtimeConfig.publishInterval, 'seconds');
