@@ -3,7 +3,7 @@ import { BlockchainStatus, getRollupProviderStatus } from '@aztec/sdk';
 const dev = window.location.hostname.includes('dev') || window.location.hostname.includes('localhost');
 const config = {
   deployTag: '',
-  rollupHost: dev ? 'https://falafel.dev.polyaztec.xyz' : 'https://falafel.polyaztec.xyz',
+  rollupHost: dev ? 'https://dev.falafel.polyaztec.xyz' : 'https://falafel.polyaztec.xyz',
   networkName: dev ? 'Mumbai' : 'Polygon',
   blockExplorerUrl: dev ? 'https://mumbai.polygonscan.com' : 'https://polygonscan.com',
 };
