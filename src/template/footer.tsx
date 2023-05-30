@@ -19,6 +19,10 @@ const socialItems = [
     name: 'Twitter',
     href: 'https://twitter.com/poly_aztec',
   },
+  {
+    name: 'Matrix',
+    href: 'https://matrix.to/#/#polyaztec:matrix.org',
+  }
 ];
 
 const FooterRoot = styled.div`
