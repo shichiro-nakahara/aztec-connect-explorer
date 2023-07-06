@@ -11,6 +11,10 @@ const networkItems = [
     name: 'Nata Network',
     href: 'https://natanetwork.io'
   },
+  {
+    name: 'Docs',
+    href: 'https://docs.natanetwork.io'
+  }
 ];
 
 const socialItems = [
