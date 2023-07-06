@@ -6,11 +6,10 @@ import { ContentWrapper } from './content_wrapper.js';
 import { FooterMenu } from './footer_menu.js';
 import { Text } from '../components/index.js';
 
-const dev = window.location.hostname.includes('dev') || window.location.hostname.includes('localhost');
 const networkItems = [
   {
-    name: 'PolyAztec',
-    href: dev ? 'https://dev.polyaztec.xyz' : 'https://polyaztec.xyz'
+    name: 'Nata Network',
+    href: 'https://natanetwork.io'
   },
 ];
 
@@ -113,7 +112,7 @@ export const Footer: React.FunctionComponent = () => (
     <StyledContent>
       <FooterContent>
         <PrimaryCol>
-          <Title text="PolyAztec" color="white" weight="light" />
+          <Title text="Nata Network" color="white" weight="light" />
         </PrimaryCol>
         <Col>
           <FooterMenu title="Network" menuItems={networkItems} />

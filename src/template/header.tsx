@@ -70,7 +70,7 @@ const Caption = styled(Text)`
 export const Header: React.FunctionComponent = () => (
   <HeaderRoot>
     <LogoRoot to="/">
-      <Title text="PolyAztec" color="white" weight="light" />
+      <Title text="Nata Network" color="white" weight="light" />
       <Caption text="BLOCK EXPLORER" color="white" weight="light" />
     </LogoRoot>
     <RightSideRoot>
