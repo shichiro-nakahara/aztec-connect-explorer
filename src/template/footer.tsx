@@ -24,7 +24,7 @@ const networkItems = [
 const socialItems = [
   {
     name: 'Twitter',
-    href: 'https://twitter.com/poly_aztec',
+    href: 'https://twitter.com/nata_network_io',
   },
   {
     name: 'Matrix',
